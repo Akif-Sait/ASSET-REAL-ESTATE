@@ -5,7 +5,78 @@ import {
   Facebook, Instagram, Linkedin, Twitter, CheckCircle, Star
 } from 'lucide-react';
 
-// --- Components ---1
+// --- Components ---
+
+// Custom SVG Logo Component recreating the provided image
+const AssetLogo = ({ className }) => (
+  <svg viewBox="0 0 100 100" className={className} fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    {/* The logo consists of three interlocking blue segments forming a triangle */}
+    <path d="M50 5 L95 95 L5 95 Z" fill="none" /> {/* bounding box ref */}
+    
+    {/* Top-Right Segment */}
+    <path d="M50 8 L92 92 H72 L50 48 L28 92 H8 L50 8 Z" fill="#0047AB" opacity="0" /> {/* Guide */}
+    
+    {/* Actual Construction based on the 'folded' blue triangle look */}
+    <g transform="translate(0, 5) scale(0.9)">
+        {/* Left folded arm */}
+        <path d="M50 0 L0 100 L22 100 L59 26 L50 0Z" fill="#0047AB" />
+        
+        {/* Right folded arm */}
+        <path d="M50 0 L100 100 L78 100 L41 26 L50 0Z" fill="#00338D" />
+        
+        {/* Bottom crossbar (The fold logic often implies a specific layering, simplifying to the visual triangle) */}
+        <path d="M15 82 L85 82 L75 62 L25 62 Z" fill="#0055CC" style={{mixBlendMode: 'multiply'}} opacity="0"/> 
+        
+        {/* Let's draw the specific geometric lines from the image: 3 interlocking L-shapes */}
+        <path d="M46 15 L18 78 L37 78 L55 40 Z" fill="#0047AB" /> {/* Inner Left */}
+        <path d="M54 15 L82 78 L63 78 L45 40 Z" fill="#0047AB" /> {/* Inner Right */}
+        <path d="M22 85 L78 85 L78 98 L22 98 Z" fill="#0047AB" /> {/* Bottom Bar? No, the image is a triangle. */}
+        
+        {/* Re-doing the paths to match the 'image_4b8894.png' perfectly (Penrose/Triangle) */}
+        <path d="M50 5 L88 85 L12 85 Z" fill="none" />
+        
+        {/* Segment 1: Left Diagonal */}
+        <path d="M48 10 L10 90 L30 90 L58 32 Z" fill="#0047AB" />
+        
+        {/* Segment 2: Right Diagonal */}
+        <path d="M52 10 L90 90 L70 90 L42 32 Z" fill="#00338D" />
+        
+        {/* Segment 3: Bottom Horizontal (Connecting the two bases visually in the negative space or overlapping) */}
+        {/* Looking at the logo, it's actually 3 nested chevrons or a thick outline triangle with cuts */}
+        <path d="M25 75 L75 75 L65 55 L35 55 Z" fill="#0055CC" />
+    </g>
+    
+    {/* Final Refined Path merging to look exactly like the reference image */}
+    <rect width="100" height="100" fill="none" />
+    <path 
+      d="M50 10 L85 80 L65 80 L50 50 L35 80 L15 80 L50 10 Z M50 25 L38 50 L62 50 L50 25 Z" 
+      fillRule="evenodd" 
+      fill="#0047AB" 
+      transform="translate(0, 5)"
+    />
+    {/* The white cuts */}
+    <path d="M50 50 L35 80 M50 50 L65 80" stroke="white" strokeWidth="2" />
+    <path d="M35 80 L65 80" stroke="white" strokeWidth="2" />
+  </svg>
+);
+
+// We will use a cleaner, single-path SVG that matches the "Blue Triangle with White Triangle Hole" aesthetic
+const FinalLogo = ({ className }) => (
+  <svg viewBox="0 0 100 100" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path 
+      d="M50 10L90 90H10L50 10Z" 
+      fill="#0047AB" 
+    />
+    <path 
+      d="M50 35L70 75H30L50 35Z" 
+      fill="white" 
+    />
+    {/* Cuts to simulate the 3-piece look */}
+    <path d="M50 10 L50 35" stroke="white" strokeWidth="2"/>
+    <path d="M90 90 L70 75" stroke="white" strokeWidth="2"/>
+    <path d="M10 90 L30 75" stroke="white" strokeWidth="2"/>
+  </svg>
+);
 
 const FadeInSection = ({ children, delay = '0s', className = '' }) => {
   const domRef = useRef();
@@ -192,11 +263,7 @@ export default function App() {
             
             {/* Center Logo Stack */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center cursor-pointer group z-20" onClick={() => document.getElementById('home').scrollIntoView({ behavior: 'smooth' })}>
-              <img 
-                src="blob:https://gemini.google.com/f2ff108d-be27-46e6-bbda-43116a2dbe99" 
-                alt="Asset Real Estate Logo" 
-                className="h-20 w-auto mb-2 transition-transform duration-500 group-hover:scale-105" 
-              />
+              <FinalLogo className="h-20 w-auto mb-2 transition-transform duration-500 group-hover:scale-105" />
               <h1 className={`text-3xl font-bold tracking-widest leading-none ${darkMode ? 'text-white' : 'text-slate-900'} font-serif`}>ASSET</h1>
               <span className={`text-[10px] tracking-[0.4em] font-medium uppercase mt-1 ${theme.textMuted}`}>REAL ESTATE</span>
             </div>
@@ -214,7 +281,7 @@ export default function App() {
           {/* Mobile Header */}
           <div className="lg:hidden flex justify-between items-center">
              <div className="flex items-center gap-3">
-                <img src="blob:https://gemini.google.com/f2ff108d-be27-46e6-bbda-43116a2dbe99" alt="Logo" className="h-14 w-auto" />
+                <FinalLogo className="h-14 w-auto" />
                 <div><h1 className="text-lg font-bold tracking-wider leading-none font-serif">ASSET</h1><span className="text-[9px] tracking-[0.2em] block">REAL ESTATE</span></div>
              </div>
              <div className="flex items-center gap-4">
@@ -228,7 +295,7 @@ export default function App() {
       {mobileMenuOpen && (
         <div className={`fixed inset-0 z-[60] ${darkMode ? 'bg-slate-900' : 'bg-white'} flex flex-col items-center justify-center space-y-8`}>
           <button onClick={() => setMobileMenuOpen(false)} className="absolute top-6 right-6 p-2"><X size={32} /></button>
-          <img src="blob:https://gemini.google.com/f2ff108d-be27-46e6-bbda-43116a2dbe99" alt="Logo" className="h-24 w-auto mb-4 animate-bounce" />
+          <FinalLogo className="h-24 w-auto mb-4 animate-bounce" />
           <nav className="flex flex-col gap-6 text-center">
             {['home', 'properties', 'about', 'contact'].map((item) => (
               <button key={item} onClick={() => { setMobileMenuOpen(false); document.getElementById(item)?.scrollIntoView({ behavior: 'smooth' }); }} className="text-2xl font-light uppercase tracking-widest hover:text-blue-600 transition-colors font-serif">{item}</button>
@@ -319,7 +386,7 @@ export default function App() {
             </div>
             <div className="w-full lg:w-1/2">
               <FadeInSection delay="200ms">
-                <div className="flex items-center gap-2 mb-6"><img src="blob:https://gemini.google.com/f2ff108d-be27-46e6-bbda-43116a2dbe99" className="w-12 h-auto" alt="Icon"/><span className="font-bold tracking-widest uppercase text-blue-600">Our Story</span></div>
+                <div className="flex items-center gap-2 mb-6"><FinalLogo className="w-12 h-auto" /><span className="font-bold tracking-widest uppercase text-blue-600">Our Story</span></div>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">Decades of Trust in <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">Real Estate</span></h2>
                 <p className={`text-lg mb-6 leading-relaxed ${theme.textMuted}`}>Founded by passionate experts, Asset Real Estate has been a pillar in the community since 1991. We don't just sell houses; we help families find their setting for life's most cherished memories.</p>
                 <div className="grid grid-cols-2 gap-10 mb-10 border-t border-gray-200 dark:border-gray-700 pt-10">
@@ -380,7 +447,7 @@ export default function App() {
          <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
               <div className="col-span-1 md:col-span-1">
-                <div className="flex items-center gap-3 mb-6"><img src="blob:https://gemini.google.com/f2ff108d-be27-46e6-bbda-43116a2dbe99" className="h-14 w-auto" alt="Logo"/><span className="text-xl font-bold text-white tracking-widest">ASSET</span></div>
+                <div className="flex items-center gap-3 mb-6"><FinalLogo className="h-14 w-auto" /><span className="text-xl font-bold text-white tracking-widest">ASSET</span></div>
                 <p className="text-sm opacity-60 leading-relaxed mb-6">Asset Real Estate represents the highest level of service and expertise in the luxury real estate market.</p>
               </div>
               <div><h4 className="text-white font-bold mb-6">Properties</h4><ul className="space-y-4 text-sm"><li className="hover:text-blue-500 cursor-pointer">Featured Listings</li><li className="hover:text-blue-500 cursor-pointer">Sold Properties</li></ul></div>
