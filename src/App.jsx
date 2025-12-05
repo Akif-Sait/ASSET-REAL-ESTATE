@@ -190,7 +190,7 @@ export default function App() {
               <NavLink name="Properties" id="properties" icon={Building2} />
             </div>
             
-            {/* Center Logo Stack - Matches your Reference Image */}
+            {/* Center Logo Stack */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center cursor-pointer group z-20" onClick={() => document.getElementById('home').scrollIntoView({ behavior: 'smooth' })}>
               <img 
                 src="/logo.png" 
@@ -245,7 +245,7 @@ export default function App() {
         </div>
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-16">
           <FadeInSection>
-            {/* The Blue Pill Badge EXACTLY as requested */}
+            {/* The Blue Pill Badge */}
             <div className="mb-8">
               <span className="bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-bold tracking-wide uppercase shadow-lg shadow-blue-600/50">
                 EST. 1991 • ASSET REAL ESTATE
