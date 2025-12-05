@@ -193,7 +193,7 @@ export default function App() {
             {/* Center Logo Stack */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center cursor-pointer group z-20" onClick={() => document.getElementById('home').scrollIntoView({ behavior: 'smooth' })}>
               <img 
-                src="logo.png" 
+                src="blob:https://gemini.google.com/f2ff108d-be27-46e6-bbda-43116a2dbe99" 
                 alt="Asset Real Estate Logo" 
                 className="h-20 w-auto mb-2 transition-transform duration-500 group-hover:scale-105" 
               />
@@ -214,7 +214,7 @@ export default function App() {
           {/* Mobile Header */}
           <div className="lg:hidden flex justify-between items-center">
              <div className="flex items-center gap-3">
-                <img src="logo.png" alt="Logo" className="h-14 w-auto" />
+                <img src="blob:https://gemini.google.com/f2ff108d-be27-46e6-bbda-43116a2dbe99" alt="Logo" className="h-14 w-auto" />
                 <div><h1 className="text-lg font-bold tracking-wider leading-none font-serif">ASSET</h1><span className="text-[9px] tracking-[0.2em] block">REAL ESTATE</span></div>
              </div>
              <div className="flex items-center gap-4">
@@ -228,7 +228,7 @@ export default function App() {
       {mobileMenuOpen && (
         <div className={`fixed inset-0 z-[60] ${darkMode ? 'bg-slate-900' : 'bg-white'} flex flex-col items-center justify-center space-y-8`}>
           <button onClick={() => setMobileMenuOpen(false)} className="absolute top-6 right-6 p-2"><X size={32} /></button>
-          <img src="logo.png" alt="Logo" className="h-24 w-auto mb-4 animate-bounce" />
+          <img src="blob:https://gemini.google.com/f2ff108d-be27-46e6-bbda-43116a2dbe99" alt="Logo" className="h-24 w-auto mb-4 animate-bounce" />
           <nav className="flex flex-col gap-6 text-center">
             {['home', 'properties', 'about', 'contact'].map((item) => (
               <button key={item} onClick={() => { setMobileMenuOpen(false); document.getElementById(item)?.scrollIntoView({ behavior: 'smooth' }); }} className="text-2xl font-light uppercase tracking-widest hover:text-blue-600 transition-colors font-serif">{item}</button>
@@ -319,7 +319,7 @@ export default function App() {
             </div>
             <div className="w-full lg:w-1/2">
               <FadeInSection delay="200ms">
-                <div className="flex items-center gap-2 mb-6"><img src="logo.png" className="w-12 h-auto" alt="Icon"/><span className="font-bold tracking-widest uppercase text-blue-600">Our Story</span></div>
+                <div className="flex items-center gap-2 mb-6"><img src="blob:https://gemini.google.com/f2ff108d-be27-46e6-bbda-43116a2dbe99" className="w-12 h-auto" alt="Icon"/><span className="font-bold tracking-widest uppercase text-blue-600">Our Story</span></div>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">Decades of Trust in <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">Real Estate</span></h2>
                 <p className={`text-lg mb-6 leading-relaxed ${theme.textMuted}`}>Founded by passionate experts, Asset Real Estate has been a pillar in the community since 1991. We don't just sell houses; we help families find their setting for life's most cherished memories.</p>
                 <div className="grid grid-cols-2 gap-10 mb-10 border-t border-gray-200 dark:border-gray-700 pt-10">
@@ -380,7 +380,7 @@ export default function App() {
          <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
               <div className="col-span-1 md:col-span-1">
-                <div className="flex items-center gap-3 mb-6"><img src="logo.png" className="h-14 w-auto" alt="Logo"/><span className="text-xl font-bold text-white tracking-widest">ASSET</span></div>
+                <div className="flex items-center gap-3 mb-6"><img src="blob:https://gemini.google.com/f2ff108d-be27-46e6-bbda-43116a2dbe99" className="h-14 w-auto" alt="Logo"/><span className="text-xl font-bold text-white tracking-widest">ASSET</span></div>
                 <p className="text-sm opacity-60 leading-relaxed mb-6">Asset Real Estate represents the highest level of service and expertise in the luxury real estate market.</p>
               </div>
               <div><h4 className="text-white font-bold mb-6">Properties</h4><ul className="space-y-4 text-sm"><li className="hover:text-blue-500 cursor-pointer">Featured Listings</li><li className="hover:text-blue-500 cursor-pointer">Sold Properties</li></ul></div>
