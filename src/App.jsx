@@ -5,7 +5,7 @@ import {
   Facebook, Instagram, Linkedin, Twitter, CheckCircle, Star
 } from 'lucide-react';
 
-// --- Components ---
+// --- Components ---1
 
 const FadeInSection = ({ children, delay = '0s', className = '' }) => {
   const domRef = useRef();
